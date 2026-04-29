@@ -13,94 +13,79 @@ st.set_page_config(
 # ── Custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
   html, body, [class*="css"] {
-    font-family: "Times New Roman", Times, serif;
+    font-family: Arial, Helvetica, sans-serif !important;
   }
 
-  /* Dark card background */
+  /* Professional light background */
   .stApp {
-  background: #f5f7fa;   /* light neutral gray (professional) */
-  color: #1f2933;        /* deep gray (better than black) */
-
+    background: #f5f7fa;
+    color: #1f2933;
   }
 
   h1, h2, h3 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 700 !important;
     color: #1f2933;
-}
+  }
 
   /* Hero title */
   .hero-title {
-    font-family: 'Syne', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2.6rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #e8e8f0 30%, #7c6af7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    color: #1f2933;
     margin-bottom: 0.2rem;
   }
 
   .hero-sub {
     font-size: 0.95rem;
     color: #6b6b85;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
   }
 
   /* Input card */
   .input-card {
-    background: #16172080;
-    border: 1px solid #2a2b3d;
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e4e7eb;
+    border-radius: 8px;
     padding: 1.8rem 2rem;
     margin-bottom: 1.5rem;
-    backdrop-filter: blur(8px);
   }
 
   .input-card h4 {
-    font-family: 'Syne', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #7c6af7;
+    color: #1f2933;
     margin-bottom: 1rem;
   }
 
   /* Result card */
   .result-card {
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e4e7eb;
+    border-radius: 8px;
     padding: 2rem;
     margin-top: 1.5rem;
     text-align: center;
-    border: 1px solid;
-    animation: fadeUp 0.4s ease;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
   }
 
   .result-card.high-value {
-    background: linear-gradient(135deg, #1a2a1a, #0e1a0e);
-    border-color: #3ddc84;
+    border-top: 4px solid #3ddc84;
   }
   .result-card.low-spending {
-    background: linear-gradient(135deg, #2a1a1a, #1a0e0e);
-    border-color: #ff6b6b;
+    border-top: 4px solid #ff6b6b;
   }
   .result-card.average {
-    background: linear-gradient(135deg, #1a1f2a, #0e1420);
-    border-color: #5b9cf6;
+    border-top: 4px solid #5b9cf6;
   }
 
   .result-label {
-    font-family: 'Syne', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -108,69 +93,70 @@ st.markdown("""
   }
 
   .result-type {
-    font-family: 'Syne', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .result-cluster {
     font-size: 0.85rem;
-    opacity: 0.55;
+    color: #6b6b85;
     margin-top: 0.3rem;
   }
 
   .result-desc {
     font-size: 0.9rem;
     margin-top: 0.8rem;
-    opacity: 0.75;
+    color: #1f2933;
     line-height: 1.6;
   }
 
   .badge {
     display: inline-block;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 99px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 500;
     margin-top: 0.6rem;
+    background: #f5f7fa !important;
+    color: #1f2933 !important;
+    border: 1px solid #e4e7eb;
   }
 
   .error-box {
-    background: #2a0e0e;
-    border: 1px solid #8b2020;
-    border-radius: 12px;
+    background: #fee2e2;
+    border: 1px solid #ef4444;
+    border-radius: 8px;
     padding: 1rem 1.2rem;
-    color: #ff8080;
+    color: #b91c1c;
     font-size: 0.9rem;
   }
 
   /* Streamlit slider tweaks */
   [data-testid="stSlider"] > div > div > div > div {
-    background: #7c6af7 !important;
+    background: #2563eb !important;
   }
 
   /* Button */
   .stButton > button {
-    background: linear-gradient(135deg, #7c6af7, #5b4dd4) !important;
+    background: #2563eb !important;
     color: white !important;
     border: none !important;
-    border-radius: 12px !important;
+    border-radius: 6px !important;
     padding: 0.65rem 2rem !important;
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 600 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 700 !important;
     font-size: 0.95rem !important;
-    letter-spacing: 0.02em !important;
     width: 100% !important;
-    transition: opacity 0.2s ease !important;
   }
 
   .stButton > button:hover {
-    opacity: 0.88 !important;
+    background: #1d4ed8 !important;
   }
 
   .divider {
     border: none;
-    border-top: 1px solid #2a2b3d;
+    border-top: 1px solid #e4e7eb;
     margin: 1.5rem 0;
   }
 </style>
